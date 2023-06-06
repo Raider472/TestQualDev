@@ -1,10 +1,12 @@
 import * as rs from "readline-sync";
 
+import { Journalisation } from "./journalisation";
 import { StationMétéo } from "./station-meteo";
 import { AfficheurTexte } from "./afficheur-texte";
 import { AfficheurGraphique } from "./afficheur-graphique";
 //Permet l'affhichage de la météo version graphique
 function main(): void {
+  const journal = Journalisation.getInstance()
   const aff = new AfficheurTexte();
   const aff2 = new AfficheurGraphique();
   const stationMeteo = new StationMétéo(10);
@@ -34,6 +36,12 @@ function main(): void {
     stationMeteo.humidité++;
     stationMeteo.temperature -= 3;
   }
+  console.log("Appuyez sur entrée pour voir la Journalisation");
+  rs.question();
+  journal.afficher()
+  console.log("Veulliez choisir le numéro de l'entré que vous voulez séléctionner");
+  let numero = rs.question();
+  journal.recuppererParNumero(Number(numero))
 }
 
 main();
