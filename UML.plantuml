@@ -1,0 +1,50 @@
+@startuml Mon Diagramme
+
+interface IObserver {
+    + miseAJour(humidité : number, température: number)
+}
+
+class Observer {
+    - _listener: Map<string, Array<IObserver>>
+
+    + Observer()
+    + ajouter(eventType: string, listener: IObserver)
+    + suppression(eventType: string, listener: IObserver)
+    + notifier(eventType: string, humidité: number, température: number)
+}
+
+Observer o--> IObserver
+StationMétéo o--> Observer
+
+class StationMétéo {
+    - _temperature: number
+    - _humidité: number
+    - _observer: Observer
+
+    + StationMétéo(temperature : number, humidité : number)
+    + get temperature(): number
+    + set temperature(temperature: number)
+    + get humidité(): number
+    + set humidité(humidité: number)
+    + ajouterObservateur(eventType: string, listener: IObserver)
+    + supprimerObservateur(eventType: string, listener: IObserver)
+    + notifierMiseAJour(eventType: string)
+    + toString()
+}
+
+class AfficheurGraphique implements IObserver {
+    - tabTemperature: Array<number>
+    - tabHumidité: Array<number>
+
+    + AfficheurGraphique()
+    - affiche()
+    + miseAJour(humidité: number, température: number)
+
+}
+
+class AfficheurTexte implements IObserver {
+    + affiche(humidité: number, température: number)
+    + miseAJour(humidité: number, température: number)
+}
+
+@enduml

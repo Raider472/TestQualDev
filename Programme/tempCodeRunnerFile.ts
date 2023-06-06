@@ -1,0 +1,1 @@
+  aff.affiche(0)
