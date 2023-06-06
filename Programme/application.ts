@@ -53,7 +53,7 @@ function main(): void {
   console.log("Appuyez sur entrée pour voir la Journalisation des écarts");
   rs.question();
   journalEcart.afficher()
-  console.log("Veulliez choisir le numéro de l'entré que vous voulez séléctionner");
+  console.log("Veulliez choisir le numéro de l'entré de la mesure que vous voulez séléctionner");
   let numero = rs.question();
   journalMesures.recuppererParNumero(Number(numero))
 }
