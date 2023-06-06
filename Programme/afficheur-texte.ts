@@ -9,6 +9,5 @@ export class AfficheurTexte implements IObserver {
 
   public miseAJour(humidité: number, température: number): void {
       this.affiche(humidité, température)
-      Journalisation.getInstance().journaliser("Température " + température + "°C " + "/ " + "Humidité : " + humidité + " %")
   }
 }

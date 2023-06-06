@@ -1,16 +1,16 @@
 export class Journalisation {
-    private static instance_: Journalisation
+    private static instance_: Map<String, Journalisation> = new Map<String, Journalisation>()
     private operation_: Array<string>
 
     constructor() {
         this.operation_ = []
     }
 
-    public static getInstance(): Journalisation {
-        if (!Journalisation.instance_) {
-            Journalisation.instance_ = new Journalisation();
+    public static getInstance(clef: string): Journalisation {
+        if(!Journalisation.instance_.get(clef)) {
+            Journalisation.instance_.set(clef, new Journalisation());
         }
-        return Journalisation.instance_;
+        return Journalisation.instance_.get(clef)!;
         }
 
     public journaliser(operation: string) {
