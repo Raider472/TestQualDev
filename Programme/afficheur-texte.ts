@@ -1,5 +1,4 @@
 import { IObserver } from "./IObserver";
-import { Journalisation } from "./journalisation";
 
 export class AfficheurTexte implements IObserver {
 
